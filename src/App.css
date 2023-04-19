@@ -90,7 +90,7 @@
 .form {
   width: 75%;
   height: 75%;
-  margin: auto;
+  margin: 5vh auto;
   background-color: white;
   border-radius: 1em;
   display: flex;
@@ -102,6 +102,12 @@
 
 .form__title {
   text-align: center;
+}
+
+.form__close-btn {
+  position: absolute;
+  top: 7vh;
+  right: 15%;
 }
 
 /* Login */
