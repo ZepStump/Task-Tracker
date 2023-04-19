@@ -76,6 +76,34 @@
   flex-grow: 1;
 }
 
+.tasks__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.addbutton {
+  display: block;
+  margin: 0 auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #00bfff;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.addbutton:hover {
+  cursor: pointer;
+}
+
 /* ADD TASK */
 .form__container {
   position: absolute;
@@ -204,7 +232,7 @@
   border-radius: 3px;
 }
 
-.register-form button {
+.register-button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
