@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "./firebase-setup/firebase";
+import { useStateValue } from "./StateProvider";
+import { auth, db } from "./firebase-setup/firebase";
+import { Link } from "react-router-dom";
 
 // mock data for dev
 const mockTasks = [
@@ -55,6 +57,72 @@ export default function Tasks() {
     }
   };
 
+  // const [name, setName] = useState("No User");
+  // const [tasks, setTasks] = useState([]);
+  // const [taskName, setTaskName] = useState("");
+  // const [taskText, setTaskText] = useState("");
+  // const [taskDue, setTasDue] = useState("");
+  // const [taskStatus, setTaskStatus] = useState("");
+
+  // //this should retireve names and tasks
+  // useEffect(() => {
+  //   db.collection("user_names").doc(user.uid)
+  //       .onSnapshot(doc => setName(doc.data().name));
+  //   db.collection("users").doc(user.uid).collection("tasks")
+  //       .onSnapshot(snapshot => (
+  //           setTasks(snapshot.docs.map(doc => ({
+  //             name: doc.id,
+  //             data: doc.data()
+  //           })))
+  //       ))
+  // }, [])
+
+  // const add = () => {
+
+  //   db
+  //     .collection("users")
+  //     .doc(user?.uid)
+  //     .collection("tasks")
+  //     .doc(taskName)
+  //     .set({
+  //       name: taskName,
+  //       due: taskDue,
+  //       text: taskText,
+  //       status: taskStatus
+  //     });
+
+  //     alert("Task was created!");
+  // }
+
+  // const edit = () => {
+
+  //   db
+  //     .collection("users")
+  //     .doc(user?.uid)
+  //     .collection("tasks")
+  //     .doc(taskName)
+  //     .update({
+  //       name: taskName,
+  //       due: taskDue,
+  //       text: taskText,
+  //       status: taskStatus
+  //     });
+
+  //     alert("Task was updated!");
+  // }
+
+  // const remove = () => {
+
+  //   db
+  //     .collection("users")
+  //     .doc(user?.uid)
+  //     .collection("tasks")
+  //     .doc(taskName)
+  //     .delete();
+
+  //     alert("Task was deleted!");
+  // }
+
   return (
     <div className="main">
       <Header name={name} signOut={signOut} />
@@ -78,6 +146,9 @@ export default function Tasks() {
     </div>
   );
 }
+
+// ****** COMPONENTS ***** //
+
 // tasks page header
 function Header({ name, signOut }) {
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { auth } from "./firebase-setup/firebase";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
   //to move the person to main page
@@ -25,9 +26,13 @@ function Login() {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        history("/tasks");
+        if (auth) {
+          history("/tasks");
+        }
       })
       .catch((error) => alert(error.message));
+
+    alert("Signed in!");
   };
 
   return <div>Login Page</div>;
