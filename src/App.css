@@ -101,10 +101,14 @@
 
 /* TASKS LIST */
 .tasks {
+  max-width: 2000px;
+  margin: auto;
   padding: 1em 2em;
 }
 
 .tasks__list-header {
+  max-width: 1000px;
+  margin: auto;
   padding: 1em;
   display: flex;
   justify-content: space-evenly;
