@@ -38,6 +38,10 @@ function App() {
 
   return (
     <Routes>
+<<<<<<< HEAD
+=======
+      <Route path="/Task-Tracker" element={<Home />} />
+>>>>>>> 9afc9a4b3e84b0fdbfc6f93b29b4a4d0e68bea16
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
