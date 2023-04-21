@@ -4,7 +4,7 @@ import { auth, db } from "./firebase-setup/firebase";
 import { Link } from "react-router-dom";
 // import icons
 import { FaTrashAlt, FaEdit, FaPlus, FaSearch } from "react-icons/fa";
-import {TasksHeader} from "./SortingTasks";
+import { TasksHeader } from "./SortingTasks";
 
 export default function Tasks() {
   //for user auth purposes
@@ -15,7 +15,7 @@ export default function Tasks() {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [toggleAddTask, setToggleAddTask] = useState(false);
   const [editTask, setEditTask] = useState(null);
-  
+
   // init filtered task for search functionality
   useEffect(() => {
     const results = tasks.filter((task) =>
@@ -32,7 +32,7 @@ export default function Tasks() {
 
   // //this should retrieve names and tasks
   useEffect(() => {
-    if(user){
+    if (user) {
       db.collection("user_names")
         .doc(user.uid)
         .onSnapshot((doc) => setName(doc.data().name));
@@ -60,16 +60,16 @@ export default function Tasks() {
           setSearchPhrase={setSearchPhrase}
           setToggleAddTask={setToggleAddTask}
         />
-        <TasksItems user={user} filteredTasks={filteredTasks} setEditTask={setEditTask} setFilteredTasks={setFilteredTasks} />
+        <TasksItems
+          user={user}
+          filteredTasks={filteredTasks}
+          setEditTask={setEditTask}
+          setFilteredTasks={setFilteredTasks}
+        />
       </TasksLayout>
       {/* logic allows add task form to be opened and closed */}
       {toggleAddTask && (
-        <AddTaskForm
-          user={user}
-          tasks={tasks}
-          setTasks={setTasks}
-          setToggleAddTask={setToggleAddTask}
-        />
+        <AddTaskForm user={user} setToggleAddTask={setToggleAddTask} />
       )}
       {editTask && (
         <EditTaskForm
@@ -105,10 +105,8 @@ function TasksLayout({ children }) {
 
 // tasks section header with search, sort, and add task ui
 
-
-
 // task items content
-function TasksItems({ user, filteredTasks, setEditTask,setFilteredTasks }) {
+function TasksItems({ user, filteredTasks, setEditTask, setFilteredTasks }) {
   // handle edit task
   const handleEdit = (taskName) => {
     console.log({ taskName });
@@ -142,12 +140,12 @@ function TasksItems({ user, filteredTasks, setEditTask,setFilteredTasks }) {
   // Changes color based on status
   const determineBackgroundColor = (status) => {
     if (status === "in-progress") {
-      return "#fff099";
+      return "#fffc99";
     }
     if (status === "to-do") {
-      return "#c2dbf7";
+      return "#9ac6ef";
     }
-    return "#9df0c0";
+    return "#aae39e";
   };
 
   return (
@@ -173,14 +171,14 @@ function TasksItems({ user, filteredTasks, setEditTask,setFilteredTasks }) {
               key={task.name}
               onClick={() => handleEdit(task)}
             >
-              <FaEdit />
+              <FaEdit size={25} />
             </button>
             <button
               className="icon-btn"
               type="button"
               onClick={() => handleDelete(task)}
             >
-              <FaTrashAlt />
+              <FaTrashAlt size={25} />
             </button>
           </div>
         </li>
@@ -190,7 +188,7 @@ function TasksItems({ user, filteredTasks, setEditTask,setFilteredTasks }) {
 }
 
 // pop out form to add new task
-function AddTaskForm({ user, tasks, setTasks, setToggleAddTask }) {
+function AddTaskForm({ user, setToggleAddTask }) {
   console.log(`User.uid ${user.uid}`);
   // init new task state
   const [newTask, setNewTask] = useState({
