@@ -14,59 +14,14 @@ export default function TasksHeader({
   // sorts tasks by name into filteredTasks
   const sortName = () => {
     setSort("name");
-    //   setFilteredTasks((tasks) => {
-    //     let newTasks = [...tasks];
-    //     newTasks.sort((a, b) => {
-    //       const aLower = a.data.name.toLowerCase();
-    //       const bLower = b.data.name.toLowerCase();
-    //       if (aLower < bLower) {
-    //         return -1;
-    //       } else if (aLower > bLower) {
-    //         return 1;
-    //       } else {
-    //         return 0;
-    //       }
-    //     });
-    //     return newTasks;
-    //   });
   };
   // sorts tasks by status into filteredTasks
   const sortStatus = () => {
     setSort("status");
-    // setFilteredTasks((tasks) => {
-    //   let newTasks = [...tasks];
-    //   newTasks.sort((a, b) => {
-    //     const aLower = a.data.status.toLowerCase();
-    //     const bLower = b.data.status.toLowerCase();
-    //     if (aLower > bLower) {
-    //       return -1;
-    //     } else if (aLower < bLower) {
-    //       return 1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   });
-    //   return newTasks;
-    // });
   };
   // sorts tasks by due date into filteredTasks
   const sortDue = () => {
     setSort("due");
-    // setFilteredTasks((tasks) => {
-    //   let newTasks = [...tasks];
-    //   newTasks.sort((a, b) => {
-    //     const aLower = a.data.due.toLowerCase();
-    //     const bLower = b.data.due.toLowerCase();
-    //     if (aLower < bLower) {
-    //       return -1;
-    //     } else if (aLower > bLower) {
-    //       return 1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   });
-    //   return newTasks;
-    // });
   };
 
   return (
