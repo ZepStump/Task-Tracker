@@ -16,7 +16,7 @@
 }
 
 .main {
-  height: 100dvh;
+  min-height: 100dvh;
   max-width: 100vh;
   margin: auto;
   background-color: var(--light);
@@ -42,6 +42,39 @@
   background-color: var(--light-accent);
 }
 
+/* HOME */
+.home-container {
+  max-width: 1200px; /* Increased max-width to 400px */
+  margin: 0 auto;
+  padding: 100px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #0056b3;
+}
+
+.home-background {
+  align-items: center;
+  background-color: black;
+}
+
+.home-title {
+  text-align: center;
+  margin-top: 0;
+  color: black;
+  font-size: 45px;
+  text-decoration: overline 4px solid #0056b3;
+}
+
+/* ***** TASKS ***** */
 /* HEADER */
 .header {
   background-color: var(--main);
@@ -66,7 +99,7 @@
   cursor: pointer;
 }
 
-/* TASKS */
+/* TASKS LIST */
 .tasks {
   padding: 1em 2em;
 }
@@ -163,36 +196,7 @@
   gap: 1em;
 }
 
-.home-container {
-  max-width: 1200px; /* Increased max-width to 400px */
-  margin: 0 auto;
-  padding: 100px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid #0056b3;
-}
-
-.home-background {
-  align-items: center;
-  background-color: black;
-}
-
-.home-title {
-  text-align: center;
-  margin-top: 0;
-  color: black;
-  font-size: 45px;
-  text-decoration: overline 4px solid #0056b3;
-}
+/* ADD / EDIT FORM */
 
 .form__container {
   position: fixed;
@@ -218,7 +222,6 @@
 }
 
 .form label {
-  /* display: block; */
   margin-bottom: 5px;
 }
 
@@ -276,7 +279,7 @@
   background-color: var(--light-accent);
 }
 
-/* Login */
+/* ***** LOGIN ***** */
 .login-container {
   max-width: 400px; /* Increased max-width to 400px */
   margin: 0 auto;
@@ -335,7 +338,7 @@
   cursor: pointer;
 }
 
-/* Register */
+/* ***** REGISTER ***** */
 .register-container {
   max-width: 500px;
   margin: 0 auto;
