@@ -11,8 +11,6 @@ import EditTaskForm from "./EditTaskForm";
 export default function Tasks() {
   //for user auth purposes
   const [{ user }, dispatch] = useStateValue();
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadError, setLoadError] = useState(false);
   const [name, setName] = useState("No User");
   const [tasks, setTasks] = useState([]);
   const [searchPhrase, setSearchPhrase] = useState("");
