@@ -165,6 +165,12 @@
   background-color: var(--main-accent);
 }
 
+.tasks__list-empty {
+  padding: 2em;
+  text-align: center;
+  font-size: 2rem;
+}
+
 .tasks__list-item {
   margin-left: auto;
   display: flex;

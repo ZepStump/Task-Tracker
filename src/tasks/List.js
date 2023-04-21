@@ -49,39 +49,45 @@ export default function List({
 
   return (
     <ul className="tasks__list">
-      {filteredTasks.map((task) => (
-        <li
-          className="tasks__list-item"
-          key={task.name}
-          style={{
-            backgroundColor: determineBackgroundColor(task.data.status),
-          }}
-        >
-          <div className="tasks__item-main">
-            <span className="tasks__item-name">{task.data.name}</span>
-            <p className="tasks__task-description">{task.data.text}</p>
-          </div>
-          <span className="tasks__item-info">{task.data.status}</span>
-          <span className="tasks__item-info">{formatDate(task.data.due)}</span>
-          <div className="tasks__item-btn-group">
-            <button
-              className="icon-btn"
-              type="button"
-              key={task.name}
-              onClick={() => handleEdit(task)}
-            >
-              <FaEdit size={25} />
-            </button>
-            <button
-              className="icon-btn"
-              type="button"
-              onClick={() => handleDelete(task)}
-            >
-              <FaTrashAlt size={25} />
-            </button>
-          </div>
-        </li>
-      ))}
+      {filteredTasks.length === 0 ? (
+        <li className="tasks__list-empty">No tasks</li>
+      ) : (
+        filteredTasks.map((task) => (
+          <li
+            className="tasks__list-item"
+            key={task.name}
+            style={{
+              backgroundColor: determineBackgroundColor(task.data.status),
+            }}
+          >
+            <div className="tasks__item-main">
+              <span className="tasks__item-name">{task.data.name}</span>
+              <p className="tasks__task-description">{task.data.text}</p>
+            </div>
+            <span className="tasks__item-info">{task.data.status}</span>
+            <span className="tasks__item-info">
+              {formatDate(task.data.due)}
+            </span>
+            <div className="tasks__item-btn-group">
+              <button
+                className="icon-btn"
+                type="button"
+                key={task.name}
+                onClick={() => handleEdit(task)}
+              >
+                <FaEdit size={25} />
+              </button>
+              <button
+                className="icon-btn"
+                type="button"
+                onClick={() => handleDelete(task)}
+              >
+                <FaTrashAlt size={25} />
+              </button>
+            </div>
+          </li>
+        ))
+      )}
     </ul>
   );
 }
