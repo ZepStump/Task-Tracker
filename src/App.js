@@ -14,9 +14,9 @@ import PathError from "./PathError";
 function App() {
   const [{}, dispatch] = useStateValue();
 
+  // init auth
   useEffect(() => {
     //will only run once when the app component loads...
-
     auth.onAuthStateChanged((authUser) => {
       console.log("THE USER IS >>>>", authUser);
 
