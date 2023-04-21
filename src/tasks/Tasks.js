@@ -11,9 +11,12 @@ import EditTaskForm from "./EditTaskForm";
 export default function Tasks() {
   //for user auth purposes
   const [{ user }, dispatch] = useStateValue();
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
   const [name, setName] = useState("No User");
   const [tasks, setTasks] = useState([]);
   const [searchPhrase, setSearchPhrase] = useState("");
+  const [sort, setSort] = useState("due");
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [toggleAddTask, setToggleAddTask] = useState(false);
   const [editTask, setEditTask] = useState(null);
@@ -44,13 +47,113 @@ export default function Tasks() {
     }
   };
 
-  // init filtered task for search functionality
+  // init filtered tasks for search and sort functionality
   useEffect(() => {
     const results = tasks.filter((task) =>
       task.data.name.toLowerCase().includes(searchPhrase.toLowerCase())
     );
-    setFilteredTasks(results);
-  }, [searchPhrase, tasks]);
+    if (sort === "status") {
+      setFilteredTasks(() => {
+        let newTasks = [...results];
+        newTasks.sort((a, b) => {
+          const aLower = a.data.status.toLowerCase();
+          const bLower = b.data.status.toLowerCase();
+          if (aLower > bLower) {
+            return -1;
+          } else if (aLower < bLower) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        return newTasks;
+      });
+    } else if (sort === "name") {
+      setFilteredTasks(() => {
+        let newTasks = [...results];
+        newTasks.sort((a, b) => {
+          const aLower = a.data.name.toLowerCase();
+          const bLower = b.data.name.toLowerCase();
+          if (aLower < bLower) {
+            return -1;
+          } else if (aLower > bLower) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        return newTasks;
+      });
+    } else {
+      setFilteredTasks(() => {
+        let newTasks = [...results];
+        newTasks.sort((a, b) => {
+          const aLower = a.data.due.toLowerCase();
+          const bLower = b.data.due.toLowerCase();
+          if (aLower < bLower) {
+            return -1;
+          } else if (aLower > bLower) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        return newTasks;
+      });
+    }
+  }, [searchPhrase, sort, tasks]);
+  // // init task sorting
+  // useEffect(() => {
+  //   if (sort === "status") {
+  //     setFilteredTasks(() => {
+  //       let newTasks = [...filteredTasks];
+  //       newTasks.sort((a, b) => {
+  //         const aLower = a.data.status.toLowerCase();
+  //         const bLower = b.data.status.toLowerCase();
+  //         if (aLower > bLower) {
+  //           return -1;
+  //         } else if (aLower < bLower) {
+  //           return 1;
+  //         } else {
+  //           return 0;
+  //         }
+  //       });
+  //       return newTasks;
+  //     });
+  //   } else if (sort === "name") {
+  //     setFilteredTasks(() => {
+  //       let newTasks = [...filteredTasks];
+  //       newTasks.sort((a, b) => {
+  //         const aLower = a.data.name.toLowerCase();
+  //         const bLower = b.data.name.toLowerCase();
+  //         if (aLower < bLower) {
+  //           return -1;
+  //         } else if (aLower > bLower) {
+  //           return 1;
+  //         } else {
+  //           return 0;
+  //         }
+  //       });
+  //       return newTasks;
+  //     });
+  //   } else {
+  //     setFilteredTasks(() => {
+  //       let newTasks = [...filteredTasks];
+  //       newTasks.sort((a, b) => {
+  //         const aLower = a.data.due.toLowerCase();
+  //         const bLower = b.data.due.toLowerCase();
+  //         if (aLower < bLower) {
+  //           return -1;
+  //         } else if (aLower > bLower) {
+  //           return 1;
+  //         } else {
+  //           return 0;
+  //         }
+  //       });
+  //       return newTasks;
+  //     });
+  //   }
+  // }, [sort, tasks]);
 
   return (
     <div className="main">
@@ -60,6 +163,8 @@ export default function Tasks() {
           setFilteredTasks={setFilteredTasks}
           searchPhrase={searchPhrase}
           setSearchPhrase={setSearchPhrase}
+          sort={sort}
+          setSort={setSort}
           setToggleAddTask={setToggleAddTask}
         />
         <List

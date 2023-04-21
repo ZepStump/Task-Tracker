@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 export default function AddTaskForm({ user, db, setToggleAddTask }) {
-  console.log(`User.uid ${user.uid}`);
   // init new task state
   const [newTask, setNewTask] = useState({
     name: "",

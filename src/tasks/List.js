@@ -11,12 +11,10 @@ export default function List({
 }) {
   // handle edit task
   const handleEdit = (taskName) => {
-    console.log({ taskName });
     setEditTask(taskName);
   };
   // delete task from db
   const remove = (task) => {
-    console.log(task);
     db.collection("users")
       .doc(user?.uid)
       .collection("tasks")
@@ -34,7 +32,6 @@ export default function List({
   };
   // reformats date from data
   const formatDate = (date) => {
-    console.log(date);
     const dateParsed = date.split("-");
     return `${dateParsed[1]}/${dateParsed[2]}/${dateParsed[0]}`;
   };
